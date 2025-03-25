@@ -4,18 +4,18 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 
 export default defineConfig({
-  base:'/myshop/',
+
   plugins: [react(),
     VitePWA({
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },
       manifest: {
         name: 'My Shop',
         short_name: 'My Shop',
         description: "It's online shopping",
         theme_color: '#ffffff',
+        background_color:"#239b56",
+        display:"fullscreen",
+        start_url:"/my-shop/",
         icons: [
           {
             src: '/logo-192x192.png',
@@ -28,9 +28,18 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      workbox:{
+        runtimeCaching:[
+          {
+            usePattern:/^https:\/\/krupali100\.github\.io\/my-shop\/.*/,
+            handler:"NetworkFirst",
+          }
+        ]
       }
     })
   ],
+    base:'/my-shop/',
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
