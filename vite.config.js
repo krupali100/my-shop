@@ -32,7 +32,7 @@ export default defineConfig({
       workbox:{
         runtimeCaching:[
           {
-            usePattern:/^https:\/\/krupali100\.github\.io\/my-shop\/.*/,
+            urlPattern:/^https:\/\/krupali100\.github\.io\/my-shop\/.*/,
             handler:"NetworkFirst",
           }
         ]
